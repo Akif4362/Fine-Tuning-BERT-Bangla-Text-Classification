@@ -1,27 +1,26 @@
 
-# Bangla Sentiment Analysis using LSTM
-
-This repository contains the implementation of a sentiment analysis model for Bangla text. The model classifies text into different sentiment categories, such as positive and negative using LSTMs.
+# Fine-Tuning BERT for Bangla Text Classification
+This repository contains the implementation of a sentiment analysis model for Bangla text. The model classifies text into different sentiment categories, such as positive and negative. We use PyTorch and Huggingface transformers library for this purpose
 
 
 ## Dataset
 
-The dataset used here was used in the paper [Sentiment Classification in Bangla Textual Content: A Comparative Study](https://arxiv.org/abs/2011.10106). It was collected from [here](https://github.com/banglanlp/bangla-sentiment-classification/tree/main)
+The dataset was collected from [here](https://github.com/banglanlp/bangla-sentiment-classification/tree/main/data/multichannel_bsentiment)
 
 ## Methodology
 
 The model was trained using the following steps:
 
-    1. Train-test split
-    2. Data preprocessing (Split tokenization, building vocab, padding)
-    3. Model architecture design (LSTM layers)
-    4. Training the LSTM model on the training set
-    5. Evaluating the model's performance
+    1. installing and importing libraries
+    2. fetching data and EDA
+    3. pre-processing data (tokenization)
+    4. creating model and training (using HuggingFace transformers)
+    5. evaluating the model's performance (accuracy, f1 score, confusion matrix)
 
 ## Results
-The model achieved an accuracy of 0.74. We used a larger training set, dropouts, simpler architecture and early stopping to reduce overfitting as much as possible. However, we can see from our loss curves that the model still largely overfits. Better results can be obtained if we used pretrained models (eg. BERT) and word embeddings (eg. GloVe, Word2Vec).
-
-
-
-
-
+We trained our model for 3 epochs. The model achieved an accuracy of 0.76. The BERT model was not pretrained on Bangla language. To get better results we can fine tune the model on a larger dataset or use a model pretrained on multi languages. 
+ Epoch | Training Loss | Test Loss | Accuracy | F1 Score 
+ ---   | ---           | ---       | ---      | ---
+1      | 0.5934        | 0.5897    | 0.7248   | 0.7208
+2      | 0.5333        | 0.5208    | 0.7569   | 0.7482
+3      | 0.4478        | 0.5062    | 0.7656   | 0.7642
